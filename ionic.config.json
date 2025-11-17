@@ -1,5 +1,7 @@
 {
   "name": "jym",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular-standalone"
 }

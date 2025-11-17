@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { Component, inject, OnInit } from '@angular/core';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { Platform , IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,17 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
   standalone: true,
   imports: [IonApp, IonRouterOutlet],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  private readonly platform = inject(Platform);
+
   constructor() {}
+
+  async ngOnInit(): Promise<void> {
+    if (this.platform.is('capacitor')) {
+      await SplashScreen.show({
+        showDuration: 2000,
+        autoHide: true
+      });
+    }
+  }
 }
