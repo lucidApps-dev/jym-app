@@ -4,7 +4,7 @@ import { addIcons } from 'ionicons';
 import { triangle, ellipse, square } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tabs',
+  selector: 'jym-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
   imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],

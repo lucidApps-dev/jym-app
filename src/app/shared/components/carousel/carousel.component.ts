@@ -8,7 +8,7 @@ export interface CarouselImage {
 }
 
 @Component({
-  selector: 'app-carousel',
+  selector: 'jym-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
   standalone: true,

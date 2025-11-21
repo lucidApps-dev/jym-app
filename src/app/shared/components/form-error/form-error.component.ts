@@ -5,7 +5,7 @@ import { IonText } from '@ionic/angular/standalone';
 import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 @Component({
-  selector: 'app-form-error',
+  selector: 'jym-form-error',
   templateUrl: './form-error.component.html',
   styleUrls: ['./form-error.component.scss'],
   standalone: true,

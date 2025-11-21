@@ -22,7 +22,7 @@ import { CarouselComponent, CarouselImage } from '@shared/components/carousel/ca
 import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'jym-auth',
   templateUrl: './auth.page.html',
   styleUrls: ['./auth.page.scss'],
   standalone: true,
