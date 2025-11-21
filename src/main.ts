@@ -8,9 +8,9 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { initializeApp, getApp } from 'firebase/app';
 import { getAuth, initializeAuth, indexedDBLocalPersistence } from 'firebase/auth';
 
-import { AppComponent } from './app/app.component';
-import { routes } from './app/app.routes';
-import { environment } from './environments/environment';
+import { AppComponent } from '@app/app.component';
+import { routes } from '@app/app.routes';
+import { environment } from '@env/environment';
 
 bootstrapApplication(AppComponent, {
   providers: [

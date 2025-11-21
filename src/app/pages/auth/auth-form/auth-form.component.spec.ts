@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, Platform } from '@ionic/angular/standalone';
-import { signal } from '@angular/core';
 import { of, throwError } from 'rxjs';
 
+import { AuthService } from '@core/services/auth.service';
+import { TranslationService } from '@core/services/translation.service';
 import { AuthFormComponent, AuthMode } from './auth-form.component';
-import { AuthService } from '../../../core/services/auth.service';
-import { TranslationService } from '../../../core/services/translation.service';
 
 describe('AuthFormComponent', () => {
   let component: AuthFormComponent;

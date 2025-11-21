@@ -1,9 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+} from '@ionic/angular/standalone';
 
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-tab1',

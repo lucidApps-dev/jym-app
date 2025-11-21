@@ -19,7 +19,7 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
   "[javascript]": {
@@ -34,16 +34,22 @@
     "source.fixAll.eslint": "explicit"
   },
   "eslint.workingDirectories": [
-    "."
+    {
+      "pattern": "."
+    }
   ],
-  "eslint.trace.server": "verbose",
   "eslint.lintTask.enable": true,
-  "eslint.debug": true,
-  "eslint.options": {
-    "overrideConfigFile": ".eslintrc.json"
-    },
   "eslint.run": "onType",
   "eslint.alwaysShowStatus": true,
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.useFlatConfig": false,
+  "eslint.nodePath": "${workspaceFolder}/node_modules",
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.json"
+  },
+  "eslint.env": {
+    "ESLINT_USE_FLAT_CONFIG": "false"
+  },
   "typescript.validate.enable": true,
   "typescript.preferences.includePackageJsonAutoImports": "on"
 }

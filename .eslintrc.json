@@ -42,30 +42,34 @@
           "error",
           {
             "groups": [
-              "builtin",
-              ["external"],
-              ["internal", "parent", "sibling", "index"]
+              ["builtin", "external"],
+              "internal",
+              ["parent", "sibling", "index"]
             ],
             "pathGroups": [
               {
-                "pattern": "@angular/**",
-                "group": "external",
-                "position": "before"
+                "pattern": "@app/**",
+                "group": "internal"
               },
               {
-                "pattern": "@ionic/**",
-                "group": "external",
-                "position": "after"
+                "pattern": "@assets/**",
+                "group": "internal"
               },
               {
-                "pattern": "rxjs/**",
-                "group": "external",
-                "position": "after"
+                "pattern": "@core/**",
+                "group": "internal"
               },
               {
-                "pattern": "firebase/**",
-                "group": "external",
-                "position": "after"
+                "pattern": "@env/**",
+                "group": "internal"
+              },
+              {
+                "pattern": "@pages/**",
+                "group": "internal"
+              },
+              {
+                "pattern": "@shared/**",
+                "group": "internal"
               }
             ],
             "pathGroupsExcludedImportTypes": ["builtin"],
@@ -92,6 +96,10 @@
       },
       "settings": {
         "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true,
+            "project": "./tsconfig.json"
+          },
           "node": {
             "extensions": [".js", ".jsx", ".ts", ".tsx"]
           }
