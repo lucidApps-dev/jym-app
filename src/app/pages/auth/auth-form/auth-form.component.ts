@@ -43,7 +43,7 @@ import { TranslatePipe } from '@shared/pipes/translate.pipe';
 export type AuthMode = 'login' | 'register';
 
 @Component({
-  selector: 'app-auth-form',
+  selector: 'jym-auth-form',
   templateUrl: './auth-form.component.html',
   styleUrls: ['./auth-form.component.scss'],
   standalone: true,

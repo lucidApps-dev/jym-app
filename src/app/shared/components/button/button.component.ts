@@ -5,7 +5,7 @@ import { IonIcon, IonSpinner } from '@ionic/angular/standalone';
 export type ButtonMode = 'primary' | 'transparent';
 
 @Component({
-  selector: 'app-button',
+  selector: 'jym-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   standalone: true,

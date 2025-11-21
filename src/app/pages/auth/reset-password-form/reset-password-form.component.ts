@@ -17,7 +17,7 @@ import { FormErrorComponent } from '@shared/components/form-error/form-error.com
 import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 @Component({
-  selector: 'app-reset-password-form',
+  selector: 'jym-reset-password-form',
   templateUrl: './reset-password-form.component.html',
   styleUrls: ['./reset-password-form.component.scss'],
   standalone: true,

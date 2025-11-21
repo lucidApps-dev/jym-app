@@ -55,12 +55,12 @@
         ></ion-input>
       </ion-item>
 
-      <app-form-error
+      <jym-form-error
         [errorKey]="emailErrorKey"
         [errorId]="emailErrorId()"
         ariaLive="polite"
         cssClass="text-sm"
-      ></app-form-error>
+      ></jym-form-error>
 
       <ion-item>
         <ion-label position="stacked">{{ 'auth.password' | translate }}</ion-label>
@@ -74,34 +74,34 @@
         ></ion-input>
       </ion-item>
 
-      <app-form-error
+      <jym-form-error
         [errorKey]="passwordErrorKey"
         [errorId]="passwordErrorId()"
         ariaLive="polite"
         cssClass="text-sm"
-      ></app-form-error>
+      ></jym-form-error>
 
-      <app-form-error
+      <jym-form-error
         [errorKey]="errorMessage()"
         [errorId]="formErrorId()"
         ariaLive="assertive"
         cssClass="text-sm"
-      ></app-form-error>
+      ></jym-form-error>
     </form>
   </div>
   
   <div class="auth-form-footer" [class.register-mode]="mode() === 'register'">
     @if (mode() === 'login') {
-      <app-button
+      <jym-button
         mode="transparent"
         icon="help-circle-outline"
         class="flex-1"
         (click)="openResetPassword.emit()"
       >
         {{ 'auth.help' | translate }}
-      </app-button>
+      </jym-button>
     }
-    <app-button
+    <jym-button
       mode="primary"
       type="submit"
       [class.flex-1]="mode() === 'login'"
@@ -111,6 +111,6 @@
       [icon]="isLoading() ? undefined : 'chevron-forward-outline'"
       [isLoading]="isLoading()"
       (click)="onSubmit()"
-    >{{ submitButtonKey() | translate }}</app-button>
+    >{{ submitButtonKey() | translate }}</jym-button>
   </div>
 </div>
