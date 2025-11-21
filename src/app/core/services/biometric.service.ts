@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { NativeBiometric } from '@capgo/capacitor-native-biometric';
 
-import { TranslationService } from './translation.service';
+import { TranslationService } from '@core/services/translation.service';
 
 export interface BiometricCredentials {
   email: string;

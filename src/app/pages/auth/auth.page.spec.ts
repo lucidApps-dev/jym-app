@@ -4,8 +4,8 @@ import { ToastController, LoadingController } from '@ionic/angular/standalone';
 import { signal } from '@angular/core';
 
 import { AuthPage } from './auth.page';
-import { AuthService } from '../../core/services/auth.service';
-import { TranslationService } from '../../core/services/translation.service';
+import { AuthService } from '@core/services/auth.service';
+import { TranslationService } from '@core/services/translation.service';
 
 describe('AuthPage', () => {
   let component: AuthPage;

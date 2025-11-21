@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { IonText } from '@ionic/angular/standalone';
 
-import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-form-error',

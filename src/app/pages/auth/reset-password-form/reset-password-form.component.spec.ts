@@ -4,8 +4,8 @@ import { signal } from '@angular/core';
 import { of, throwError } from 'rxjs';
 
 import { ResetPasswordFormComponent } from './reset-password-form.component';
-import { AuthService } from '../../../core/services/auth.service';
-import { TranslationService } from '../../../core/services/translation.service';
+import { AuthService } from '@core/services/auth.service';
+import { TranslationService } from '@core/services/translation.service';
 
 describe('ResetPasswordFormComponent', () => {
   let component: ResetPasswordFormComponent;

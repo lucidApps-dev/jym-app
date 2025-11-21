@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 
 import { Tab1Page } from './tab1.page';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '@core/services/auth.service';
 
 describe('Tab1Page', () => {
   let component: Tab1Page;

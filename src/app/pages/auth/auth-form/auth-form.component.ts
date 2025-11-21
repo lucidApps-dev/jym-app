@@ -1,27 +1,44 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, output, signal, inject, effect } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { addIcons } from 'ionicons';
-import { logoGoogle, logoApple, chevronForwardOutline, helpCircleOutline } from 'ionicons/icons';
 import {
-    IonButton,
-    IonInput,
-    IonItem,
-    IonLabel,
-    IonSpinner,
-    IonIcon,
-    LoadingController,
-    Platform,
-  } from '@ionic/angular/standalone';
+  Component,
+  input,
+  output,
+  signal,
+  inject,
+  effect,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
+import {
+  IonButton,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonSpinner,
+  IonIcon,
+  LoadingController,
+  Platform,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import {
+  logoGoogle,
+  logoApple,
+  chevronForwardOutline,
+  helpCircleOutline,
+} from 'ionicons/icons';
 
-import { AuthService } from '../../../core/services/auth.service';
-import { TranslationService } from '../../../core/services/translation.service';
-import { getAuthErrorMessage } from '../../../core/utils/auth.utils';
-import { markFormGroupTouched } from '../../../core/utils/form.utils';
-import { ButtonComponent } from '../../../shared/components/button/button.component';
-import { FormErrorComponent } from '../../../shared/components/form-error/form-error.component';
-import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
+import { AuthService } from '@core/services/auth.service';
+import { TranslationService } from '@core/services/translation.service';
+import { getAuthErrorMessage } from '@core/utils/auth.utils';
+import { markFormGroupTouched } from '@core/utils/form.utils';
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { FormErrorComponent } from '@shared/components/form-error/form-error.component';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 export type AuthMode = 'login' | 'register';
 
@@ -60,10 +77,14 @@ export class AuthFormComponent {
   public readonly isLoading = signal<boolean>(false);
   public readonly errorMessage = signal<string | null>(null);
 
-  public readonly titleKey = () => this.mode() === 'login' ? 'auth.login' : 'auth.createAccount';
-  public readonly submitButtonKey = () => this.mode() === 'login' ? 'auth.login' : 'auth.register';
-  public readonly googleButtonKey = () => this.mode() === 'login' ? 'auth.signInWithGoogle' : 'auth.signUpWithGoogle';
-  public readonly appleButtonKey = () => this.mode() === 'login' ? 'auth.signInWithApple' : 'auth.signUpWithApple';
+  public readonly titleKey = () =>
+    this.mode() === 'login' ? 'auth.login' : 'auth.createAccount';
+  public readonly submitButtonKey = () =>
+    this.mode() === 'login' ? 'auth.login' : 'auth.register';
+  public readonly googleButtonKey = () =>
+    this.mode() === 'login' ? 'auth.signInWithGoogle' : 'auth.signUpWithGoogle';
+  public readonly appleButtonKey = () =>
+    this.mode() === 'login' ? 'auth.signInWithApple' : 'auth.signUpWithApple';
   public readonly formId = () => `${this.mode()}-form`;
   public readonly emailInputId = () => `${this.mode()}-email`;
   public readonly passwordInputId = () => `${this.mode()}-password`;
@@ -73,8 +94,13 @@ export class AuthFormComponent {
   public readonly isIphone = () => this.platform.is('ios');
 
   constructor() {
-    addIcons({ logoGoogle, logoApple, chevronForwardOutline, helpCircleOutline });
-    
+    addIcons({
+      logoGoogle,
+      logoApple,
+      chevronForwardOutline,
+      helpCircleOutline,
+    });
+
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -122,13 +148,19 @@ export class AuthFormComponent {
   }
 
   async onGoogleSignIn(): Promise<void> {
-     // TODO: Implement Google Sign In
-     this.errorMessage.set(this.translationService.translate('auth.errors.googleSignInNotImplemented'));
+    // TODO: Implement Google Sign In
+    this.errorMessage.set(
+      this.translationService.translate(
+        'auth.errors.googleSignInNotImplemented'
+      )
+    );
   }
 
   async onAppleSignIn(): Promise<void> {
     // TODO: Implement Apple Sign In
-    this.errorMessage.set(this.translationService.translate('auth.errors.appleSignInNotImplemented'));
+    this.errorMessage.set(
+      this.translationService.translate('auth.errors.appleSignInNotImplemented')
+    );
   }
 
   async onSubmit(): Promise<void> {
@@ -145,7 +177,7 @@ export class AuthFormComponent {
         this.mode() === 'login' ? 'auth.loading.login' : 'auth.loading.register'
       ),
     });
-    
+
     await loading.present();
 
     const { email, password } = this.authForm.value;
@@ -160,7 +192,9 @@ export class AuthFormComponent {
           },
           error: async (error) => {
             await loading.dismiss();
-            const errorMessage = getAuthErrorMessage(error?.code || error?.message || '') || 'auth.errors.loginFailed';
+            const errorMessage =
+              getAuthErrorMessage(error?.code || error?.message || '') ||
+              'auth.errors.loginFailed';
             this.errorMessage.set(errorMessage);
           },
         });
@@ -173,18 +207,21 @@ export class AuthFormComponent {
           },
           error: async (error) => {
             await loading.dismiss();
-            const errorMessage = getAuthErrorMessage(error?.code || error?.message || '') || 'auth.errors.registerFailed';
+            const errorMessage =
+              getAuthErrorMessage(error?.code || error?.message || '') ||
+              'auth.errors.registerFailed';
             this.errorMessage.set(errorMessage);
           },
         });
       }
     } catch (error: any) {
       await loading.dismiss();
-      const errorMessage = getAuthErrorMessage(error?.code || error?.message || '') || 'auth.errors.genericError';
+      const errorMessage =
+        getAuthErrorMessage(error?.code || error?.message || '') ||
+        'auth.errors.genericError';
       this.errorMessage.set(errorMessage);
     } finally {
       this.isLoading.set(false);
     }
   }
 }
-

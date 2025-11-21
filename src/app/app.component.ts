@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { Platform , IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
-import { TranslationService } from './core/services/translation.service';
+import { TranslationService } from '@core/services/translation.service';
 
 @Component({
   selector: 'app-root',

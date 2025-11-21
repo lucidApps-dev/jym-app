@@ -8,13 +8,13 @@ import {
   LoadingController,
 } from '@ionic/angular/standalone';
 
-import { AuthService } from '../../../core/services/auth.service';
-import { TranslationService } from '../../../core/services/translation.service';
-import { getAuthErrorMessage } from '../../../core/utils/auth.utils';
-import { markFormGroupTouched } from '../../../core/utils/form.utils';
-import { ButtonComponent } from '../../../shared/components/button/button.component';
-import { FormErrorComponent } from '../../../shared/components/form-error/form-error.component';
-import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
+import { AuthService } from '@core/services/auth.service';
+import { TranslationService } from '@core/services/translation.service';
+import { getAuthErrorMessage } from '@core/utils/auth.utils';
+import { markFormGroupTouched } from '@core/utils/form.utils';
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { FormErrorComponent } from '@shared/components/form-error/form-error.component';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-reset-password-form',

@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal, inject, OnInit, effect } from '@angular/core';
 import { Router } from '@angular/router';
-import { addIcons } from 'ionicons';
-import { close, chevronForwardOutline, helpCircleOutline } from 'ionicons/icons';
 import {
   IonContent,
   IonModal,
@@ -12,14 +10,16 @@ import {
   ToastController,
   LoadingController,
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { close, chevronForwardOutline, helpCircleOutline } from 'ionicons/icons';
 
-import { AuthFormComponent } from './auth-form/auth-form.component';
-import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
-import { AuthService } from '../../core/services/auth.service';
-import { TranslationService } from '../../core/services/translation.service';
-import { ButtonComponent } from '../../shared/components/button/button.component';
-import { CarouselComponent, CarouselImage } from '../../shared/components/carousel/carousel.component';
-import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { AuthService } from '@core/services/auth.service';
+import { TranslationService } from '@core/services/translation.service';
+import { AuthFormComponent } from '@pages/auth/auth-form/auth-form.component';
+import { ResetPasswordFormComponent } from '@pages/auth/reset-password-form/reset-password-form.component';
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { CarouselComponent, CarouselImage } from '@shared/components/carousel/carousel.component';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-auth',

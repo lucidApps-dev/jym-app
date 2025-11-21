@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, User } from '@angular/fire/auth';
 import { Observable, from, map, switchMap, tap, of } from 'rxjs';
 
-import { BiometricService } from './biometric.service';
+import { BiometricService } from '@core/services/biometric.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,9 +23,6 @@ export class AuthService {
             if (isAvailable) {
               return from(this.biometricService.storeCredentials(email, password)).pipe(
                 map(() => userCredential.user),
-                tap({
-                  error: (error) => console.error('Error storing biometric credentials:', error),
-                })
               );
             }
             return of(userCredential.user);
@@ -43,9 +40,6 @@ export class AuthService {
             if (isAvailable) {
               return from(this.biometricService.storeCredentials(email, password)).pipe(
                 map(() => userCredential.user),
-                tap({
-                  error: (error) => console.error('Error storing biometric credentials:', error),
-                })
               );
             }
             return of(userCredential.user);
