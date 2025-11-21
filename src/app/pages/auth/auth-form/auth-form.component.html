@@ -1,0 +1,116 @@
+<div class="auth-form-container">
+  <div class="auth-form-content">
+    <h2 class="text-2xl font-bold">{{ titleKey() | translate }}</h2>
+
+    <div class="flex flex-col gap-2">
+      <ion-button
+        expand="block"
+        fill="outline"
+        class="social-button"
+        (click)="onGoogleSignIn()"
+        [disabled]="isLoading()"
+      >
+        @if (isLoading()) {
+          <ion-spinner name="crescent" slot="start"></ion-spinner>&nbsp;
+        } @else {
+          <ion-icon name="logo-google" slot="start" aria-hidden="true"></ion-icon>&nbsp;
+        }
+        {{ googleButtonKey() | translate }}
+      </ion-button>
+    
+      @if (isIphone()) {
+        <ion-button
+          expand="block"
+          fill="outline"
+          class="social-button"
+          (click)="onAppleSignIn()"
+          [disabled]="isLoading()"
+        >
+          @if (isLoading()) {
+            <ion-spinner name="crescent" slot="start"></ion-spinner>&nbsp;
+          } @else {
+            <ion-icon name="logo-apple" slot="start" aria-hidden="true"></ion-icon>&nbsp;
+          }
+          {{ appleButtonKey() | translate }}
+        </ion-button>
+      }
+    </div>
+    
+    <div class="flex flex-row items-center justify-between gap-2">
+      <hr class="divider flex-1" aria-hidden="true">
+      <span class="text-center text-sm">{{ 'auth.or' | translate }}</span>
+      <hr class="divider flex-1" aria-hidden="true">
+    </div>
+
+    <form [id]="formId()" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="stacked">{{ 'auth.email' | translate }}</ion-label>
+        <ion-input
+          [id]="emailInputId()"
+          type="email"
+          formControlName="email"
+          [attr.aria-describedby]="emailErrorKey ? emailErrorId() : null"
+          [attr.aria-invalid]="authForm.get('email')?.invalid && authForm.get('email')?.touched"
+          [attr.aria-required]="true"
+        ></ion-input>
+      </ion-item>
+
+      <app-form-error
+        [errorKey]="emailErrorKey"
+        [errorId]="emailErrorId()"
+        ariaLive="polite"
+        cssClass="text-sm"
+      ></app-form-error>
+
+      <ion-item>
+        <ion-label position="stacked">{{ 'auth.password' | translate }}</ion-label>
+        <ion-input
+          [id]="passwordInputId()"
+          type="password"
+          formControlName="password"
+          [attr.aria-describedby]="passwordErrorKey ? passwordErrorId() : null"
+          [attr.aria-invalid]="authForm.get('password')?.invalid && authForm.get('password')?.touched"
+          [attr.aria-required]="true"
+        ></ion-input>
+      </ion-item>
+
+      <app-form-error
+        [errorKey]="passwordErrorKey"
+        [errorId]="passwordErrorId()"
+        ariaLive="polite"
+        cssClass="text-sm"
+      ></app-form-error>
+
+      <app-form-error
+        [errorKey]="errorMessage()"
+        [errorId]="formErrorId()"
+        ariaLive="assertive"
+        cssClass="text-sm"
+      ></app-form-error>
+    </form>
+  </div>
+  
+  <div class="auth-form-footer" [class.register-mode]="mode() === 'register'">
+    @if (mode() === 'login') {
+      <app-button
+        mode="transparent"
+        icon="help-circle-outline"
+        class="flex-1"
+        (click)="openResetPassword.emit()"
+      >
+        {{ 'auth.help' | translate }}
+      </app-button>
+    }
+    <app-button
+      mode="primary"
+      type="submit"
+      [class.flex-1]="mode() === 'login'"
+      [class.register-button]="mode() === 'register'"
+      [disabled]="authForm.invalid || isLoading()"
+      [form]="formId()"
+      [icon]="isLoading() ? undefined : 'chevron-forward-outline'"
+      [isLoading]="isLoading()"
+      (click)="onSubmit()"
+    >{{ submitButtonKey() | translate }}</app-button>
+  </div>
+</div>

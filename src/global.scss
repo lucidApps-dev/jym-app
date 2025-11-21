@@ -35,3 +35,58 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global color variables */
+:root {
+  --color-primary: #14B8A6;
+  --color-primary-light: #2DD4BF;
+  --color-background-default: #F9F9F9;
+}
+
+/* Default background color for all pages */
+ion-content {
+  --background: var(--color-background-default);
+}
+
+.bg-default {
+  background: var(--color-background-default);
+}
+
+.icon-primary {
+  color: var(--color-primary) !important;
+} 
+
+
+/* Custom Tailwind utility classes for safe-area */
+@layer utilities {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-area-x {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .safe-area {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .pb-safe {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  }
+
+  .pt-safe {
+    padding-top: calc(1.5rem + env(safe-area-inset-top));
+  }
+}

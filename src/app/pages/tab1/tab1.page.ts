@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/angular/standalone';
 
-import { ExploreContainerComponent } from '../../shared/components/explore-container/explore-container.component';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-tab1',
@@ -13,11 +14,24 @@ import { ExploreContainerComponent } from '../../shared/components/explore-conta
     IonToolbar,
     IonTitle,
     IonContent,
-    ExploreContainerComponent,
+    IonButton,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
     CommonModule,
   ],
   standalone: true,
 })
 export class Tab1Page {
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
+  user$ = this.authService.getUser();
+
+  onLogout(): void {
+    this.authService.logout().subscribe(() => {
+      this.router.navigateByUrl('/auth');
+    });
+  }
 }

@@ -1,0 +1,77 @@
+{
+  "auth": {
+    "createAccount": "Create an account",
+    "biometricAuthentication": "Biometric authentication...",
+    "biometricAuthenticationError": "Error during biometric authentication",
+    "email": "Email",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
+    "errors": {
+      "default": "An error occurred during authentication.",
+      "emailAlreadyInUse": "This email is already in use.",
+      "invalidEmail": "The email address is not valid.",
+      "operationNotAllowed": "Google Sign-In is not enabled. Please contact support.",
+      "weakPassword": "The password is too weak.",
+      "userDisabled": "This user account has been disabled.",
+      "userNotFound": "No account found with this email.",
+      "wrongPassword": "Incorrect password.",
+      "invalidCredential": "The credentials are incorrect.",
+      "tooManyRequests": "Too many attempts. Please try again later.",
+      "networkRequestFailed": "Network connection error.",
+      "popupClosedByUser": "The sign-in window was closed.",
+      "cancelledPopupRequest": "Sign-in was cancelled.",
+      "loginFailed": "Error during sign in",
+      "registerFailed": "Error during sign up",
+      "resetPasswordFailed": "Error sending password reset email",
+      "genericError": "An error occurred",
+      "appleSignInNotImplemented": "Apple Sign In not implemented",
+      "googleSignInNotImplemented": "Google Sign In not implemented"
+    },
+    "help": "Help",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "password": "Password",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Password must contain at least 6 characters",
+    "or": "or",
+    "register": "Sign up",
+    "reset": "Reset",
+    "resetPassword": "Reset password",
+    "resetPasswordDescription": "Enter your email address and we'll send you a link to reset your password.",
+    "resetPasswordSuccess": "A password reset email has been sent to your email address.",
+    "signInWithApple": "Sign in with Apple",
+    "signInWithGoogle": "Sign in with Google",
+    "signUpWithApple": "Sign up with Apple",
+    "signUpWithGoogle": "Sign up with Google",
+    "loading": {
+      "login": "Signing in...",
+      "register": "Signing up...",
+      "resetPassword": "Sending reset email...",
+      "signingIn": "Signing in...",
+      "signingUp": "Signing up..."
+    }
+  },
+  "biometric": {
+    "authenticateToLogin": "Authenticate to sign in",
+    "authenticateToRetrieve": "Authenticate to retrieve your credentials",
+    "title": "Biometric authentication",
+    "subtitle": "Use Face ID to sign in",
+    "cancel": "Cancel",
+    "notAvailable": "Biometric authentication is only available on native platforms"
+  },
+  "carousel": {
+    "slide1": {
+      "alt": "Your personal gym journal",
+      "title": "Train. Track. Evolve."
+    },
+    "slide2": {
+      "alt": "Design and simplicity",
+      "title": "Everything you need, and nothing more."
+    },
+    "slide3": {
+      "alt": "Graphs and charts",
+      "title": "See how far you've come."
+    }
+  }
+}
+

@@ -1,0 +1,75 @@
+<ion-content class="flex flex-col h-full relative">
+  <div class="w-full overflow-hidden pt-10 md:pt-16 flex justify-center items-center auth-carousel-container">
+    <div class="w-full max-w-4xl mx-auto h-full">
+      <app-carousel
+        [images]="carouselImages()"
+        [autoplayInterval]="5000"
+        height="100%"
+      ></app-carousel>
+    </div>
+  </div>
+
+  <div class="fixed bottom-0 left-0 right-0 p-6 pb-safe">
+    <div class="w-full flex flex-row gap-4 max-w-4xl mx-auto">
+      <app-button mode="transparent" icon="chevron-forward-outline" (click)="openLoginModal()" class="flex-1">
+        {{ 'auth.login' | translate }}
+      </app-button>
+
+      <app-button mode="primary" icon="chevron-forward-outline" (click)="openRegisterModal()" class="flex-1">
+        {{ 'auth.register' | translate }}
+      </app-button>
+    </div>
+  </div>
+
+  <ion-modal [isOpen]="isLoginModalOpen()" (willDismiss)="closeLoginModal()">
+    <ng-template>
+      <div class="flex flex-row justify-end items-center safe-area-top pr-4 bg-default">
+        <ion-buttons>
+          <ion-button (click)="closeLoginModal()">
+            <ion-icon name="close" slot="icon-only" class="icon-primary"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+      <ion-content>
+        <app-auth-form
+          mode="login"
+          (authSuccess)="onAuthSuccess()"
+          (openResetPassword)="openResetPasswordModal()"
+        ></app-auth-form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isRegisterModalOpen()" (willDismiss)="closeRegisterModal()">
+    <ng-template>
+      <div class="flex flex-row justify-end items-center safe-area-top pr-4 bg-default">
+        <ion-buttons>
+          <ion-button (click)="closeRegisterModal()">
+            <ion-icon name="close" slot="icon-only" class="icon-primary"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+      <ion-content>
+        <app-auth-form
+          mode="register"
+          (authSuccess)="onAuthSuccess()"
+        ></app-auth-form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isResetPasswordModalOpen()" (willDismiss)="closeResetPasswordModal()">
+    <ng-template>
+      <div class="flex flex-row justify-end items-center safe-area-top pr-4 bg-default">
+        <ion-buttons>
+          <ion-button (click)="closeResetPasswordModal()">
+            <ion-icon name="close" slot="icon-only" class="icon-primary"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+      <ion-content>
+        <app-reset-password-form></app-reset-password-form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

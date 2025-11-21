@@ -12,6 +12,16 @@
   </ion-header>
 
   <div class="ion-padding">
-    <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-card *ngIf="user$ | async as user">
+      <ion-card-header>
+        <ion-card-title>Bienvenue !</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Vous êtes connecté en tant que : <strong>{{ user.email }}</strong></p>
+        <ion-button expand="block" color="danger" (click)="onLogout()" class="ion-margin-top">
+          Se déconnecter
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

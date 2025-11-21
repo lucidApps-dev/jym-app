@@ -1,0 +1,11 @@
+@if (errorKey()) {
+  <ion-text color="danger">
+    <p
+      [id]="errorId()"
+      [class]="cssClass()"
+      role="alert"
+      [attr.aria-live]="ariaLive()"
+    >{{ errorKey()! | translate }}</p>
+  </ion-text>
+}
+

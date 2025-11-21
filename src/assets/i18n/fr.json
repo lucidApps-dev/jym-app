@@ -1,0 +1,77 @@
+{
+  "auth": {
+    "createAccount": "Créer un compte",
+    "biometricAuthentication": "Authentification biométrique...",
+    "biometricAuthenticationError": "Erreur lors de l'authentification biométrique",
+    "email": "Email",
+    "emailRequired": "L'email est requis",
+    "emailInvalid": "Veuillez entrer un email valide",
+    "errors": {
+      "default": "Une erreur est survenue lors de l'authentification.",
+      "emailAlreadyInUse": "Cet email est déjà utilisé.",
+      "invalidEmail": "L'email n'est pas valide.",
+      "operationNotAllowed": "La connexion Google n'est pas activée. Veuillez contacter le support.",
+      "weakPassword": "Le mot de passe est trop faible.",
+      "userDisabled": "Ce compte utilisateur a été désactivé.",
+      "userNotFound": "Aucun compte trouvé avec cet email.",
+      "wrongPassword": "Mot de passe incorrect.",
+      "invalidCredential": "Les identifiants sont incorrects.",
+      "tooManyRequests": "Trop de tentatives. Veuillez réessayer plus tard.",
+      "networkRequestFailed": "Erreur de connexion réseau.",
+      "popupClosedByUser": "La fenêtre de connexion a été fermée.",
+      "cancelledPopupRequest": "La connexion a été annulée.",
+      "loginFailed": "Erreur lors de la connexion",
+      "registerFailed": "Erreur lors de l'inscription",
+      "resetPasswordFailed": "Erreur lors de l'envoi de l'email de réinitialisation",
+      "genericError": "Une erreur est survenue",
+      "appleSignInNotImplemented": "Apple Sign In non implémenté",
+      "googleSignInNotImplemented": "Google Sign In non implémenté"
+    },
+    "help": "Aide",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "password": "Mot de passe",
+    "passwordRequired": "Le mot de passe est requis",
+    "passwordMinLength": "Le mot de passe doit contenir au moins 6 caractères",
+    "or": "ou",
+    "register": "S'inscrire",
+    "reset": "Réinitialiser",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "resetPasswordDescription": "Entrez votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "resetPasswordSuccess": "Un email de réinitialisation a été envoyé à votre adresse email.",
+    "signInWithApple": "Se connecter avec Apple",
+    "signInWithGoogle": "Se connecter avec Google",
+    "signUpWithApple": "S'inscrire avec Apple",
+    "signUpWithGoogle": "S'inscrire avec Google",
+    "loading": {
+      "login": "Connexion en cours...",
+      "register": "Inscription en cours...",
+      "resetPassword": "Envoi de l'email de réinitialisation...",
+      "signingIn": "Connexion en cours...",
+      "signingUp": "Inscription en cours..."
+    }
+  },
+  "biometric": {
+    "authenticateToLogin": "Authentifiez-vous pour vous connecter",
+    "authenticateToRetrieve": "Authentifiez-vous pour récupérer vos identifiants",
+    "title": "Authentification biométrique",
+    "subtitle": "Utilisez Face ID pour vous connecter",
+    "cancel": "Annuler",
+    "notAvailable": "L'authentification biométrique n'est disponible que sur les plateformes natives"
+  },
+  "carousel": {
+    "slide1": {
+      "alt": "Votre journal de gym personnel",
+      "title": "S'entraîner. Suivre. Évoluer."
+    },
+    "slide2": {
+      "alt": "Design et simplicité",
+      "title": "Tout ce dont vous avez besoin, et rien de plus."
+    },
+    "slide3": {
+      "alt": "Graphiques",
+      "title": "Voyez à quel point vous avez progressé."
+    }
+  }
+}
+

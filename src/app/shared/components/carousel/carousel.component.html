@@ -1,0 +1,36 @@
+<div class="carousel-container" [style.height]="height()">
+  <div class="carousel-progress">
+    @for (image of images(); track $index) {
+      <div
+        class="progress-bar"
+        [class.active]="currentSlideIndex() === $index"
+        (click)="goToSlide($index)"
+        (keydown.enter)="goToSlide($index)"
+        [attr.aria-label]="'Aller à la slide ' + ($index + 1)"
+      ></div>
+    }
+  </div>
+
+  <div 
+    class="slides-wrapper"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <div
+      class="slides-container"
+      [style.transform]="'translateX(-' + (currentSlideIndex() * 100) + '%)'"
+    >
+      @for (image of images(); track $index) {
+        <div class="slide">
+          <div class="slide-image">
+            <img [src]="image.url" [alt]="image.alt" />
+          </div>
+          <div class="slide-content">
+            <h4>{{ image.title }}</h4>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
