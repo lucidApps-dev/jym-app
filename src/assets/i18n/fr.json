@@ -72,6 +72,55 @@
       "alt": "Graphiques",
       "title": "Voyez à quel point vous avez progressé."
     }
+  },
+  "workouts": {
+    "title": "Workouts",
+    "welcome": {
+      "title": "Bienvenue 👋",
+      "description": "Crée ton premier workout pour lancer tes séances et suivre ta progression."
+    },
+    "actions": {
+      "create": "Créer",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "cancel": "Annuler",
+      "logout": "Déconnexion"
+    },
+    "errors": {
+      "loading": "Erreur lors du chargement des workouts",
+      "create": "Erreur lors de la création du workout",
+      "update": "Erreur lors de la modification du workout",
+      "delete": "Erreur lors de la suppression du workout",
+      "userNotConnected": "Utilisateur non connecté",
+      "workoutNotFound": "Utilisateur non connecté ou workout introuvable"
+    },
+    "delete": {
+      "confirm": "Êtes-vous sûr de vouloir supprimer le workout \"{{name}}\" ?"
+    },
+    "form": {
+      "title": {
+        "create": "Créer un workout",
+        "edit": "Modifier le workout"
+      },
+      "workoutName": {
+        "label": "Nom du workout"
+      },
+      "exercises": {
+        "label": "Exercices",
+        "placeholder": "Nom de l'exercice",
+        "empty": "Aucun exercice ajouté. Cliquez sur le bouton ci-dessus pour en ajouter un."
+      },
+      "submit": {
+        "create": "Créer",
+        "edit": "Modifier"
+      }
+    },
+    "list": {
+      "exercisesCount": {
+        "one": "{{count}} exercice",
+        "other": "{{count}} exercices"
+      }
+    }
   }
 }
 

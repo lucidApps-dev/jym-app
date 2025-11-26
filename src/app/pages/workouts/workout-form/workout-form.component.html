@@ -1,0 +1,86 @@
+<form class="flex h-full flex-col justify-between gap-6 px-6 pb-8" (ngSubmit)="onSubmitWorkout()" autocomplete="off">
+	<div class="flex flex-col gap-6">
+		<div class="flex flex-col gap-4">
+			<h2 class="text-2xl font-semibold my-0" [style.color]="'var(--ion-text-color)'">
+				{{ isEditMode() ? ('workouts.form.title.edit' | translate) : ('workouts.form.title.create' | translate) }}
+			</h2>
+			<ion-item class="workout-form-item">
+				<ion-label position="stacked">{{ 'workouts.form.workoutName.label' | translate }}</ion-label>
+				<ion-input
+					id="workout-name"
+					type="text"
+					[ngModel]="workoutName()"
+					(ngModelChange)="workoutName.set($event)"
+					name="workoutName"
+					required
+				></ion-input>
+			</ion-item>
+		</div>
+	
+		<div class="flex flex-col gap-4">
+			<div class="flex items-center justify-between">
+				<h3 class="text-lg font-semibold my-0" [style.color]="'var(--ion-text-color)'">
+					{{ 'workouts.form.exercises.label' | translate }}
+				</h3>
+				<button
+					type="button"
+					class="exercise-add-button"
+					(click)="onAddExercise()"
+				>
+					<ion-icon name="add-outline" class="text-base"></ion-icon>
+				</button>
+			</div>
+
+			@if (hasExercises()) {
+				<div class="flex flex-col gap-3">
+					<ion-reorder-group [disabled]="false" (ionItemReorder)="onReorder($event)" class="flex flex-col gap-3">
+						@for (exercise of exercises(); track trackByExerciseId($index, exercise)) {
+							<div class="exercise-card">
+								<div class="flex items-center gap-3">
+									<ion-reorder class="exercise-reorder">
+										<ion-icon name="reorder-three-outline" class="text-lg"></ion-icon>
+									</ion-reorder>
+									<ion-input
+										class="exercise-input"
+										type="text"
+										[ngModel]="exercise.name"
+										(ngModelChange)="onExerciseNameChange($index, $event)"
+										[ngModelOptions]="{ standalone: true }"
+										placeholder="{{ 'workouts.form.exercises.placeholder' | translate }}"
+										required
+									></ion-input>
+									<ion-button
+										class="exercise-delete-button"
+										fill="clear"
+										size="small"
+										(click)="onRemoveExercise($index)"
+									>
+										<ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+									</ion-button>
+								</div>
+							</div>
+						}
+					</ion-reorder-group>
+				</div>
+			} @else {
+				<div class="exercise-empty-state">
+					<p class="text-sm my-0" [style.color]="'var(--ion-text-color-step-600, var(--ion-color-medium))'">
+						{{ 'workouts.form.exercises.empty' | translate }}
+					</p>
+				</div>
+			}
+		</div>
+	</div>
+	
+	<div class="flex justify-end">
+		<jym-button
+			mode="primary"
+			icon="checkmark-outline"
+			class="w-1/2"
+			type="submit"
+			[disabled]="isSubmitDisabled()"
+		>
+			{{ isEditMode() ? ('workouts.form.submit.edit' | translate) : ('workouts.form.submit.create' | translate) }}
+		</jym-button>
+	</div>
+</form>

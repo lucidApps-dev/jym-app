@@ -1,0 +1,81 @@
+.workout-form-item {
+	--padding-start: 0;
+	--inner-padding-end: 0;
+	--background: var(--color-background-default);
+	
+	ion-input {
+		--highlight-color-focused: var(--ion-text-color-step-400, var(--ion-color-medium));
+		--border-color-focused: var(--ion-text-color-step-300, var(--ion-color-dark));
+	}
+}
+
+.exercise-card {
+	background: var(--ion-color-step-50, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.05));
+	border: 1px solid var(--ion-color-step-100, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1));
+	border-radius: 0.75rem;
+	padding: 0.875rem 1rem;
+	transition: all 0.2s ease;
+}
+
+.exercise-input {
+	--background: transparent;
+	--padding-start: 0;
+	--padding-end: 0;
+	--highlight-color-focused: var(--ion-text-color-step-400, var(--ion-color-medium));
+	--border-color-focused: var(--ion-text-color-step-300, var(--ion-color-dark));
+	flex: 1;
+}
+
+.exercise-reorder {
+	--color: var(--ion-text-color-step-400, var(--ion-color-medium));
+	cursor: grab;
+	
+	&:active {
+		cursor: grabbing;
+	}
+}
+
+.exercise-delete-button {
+	--color: var(--ion-color-danger);
+	--padding-start: 0.5rem;
+	--padding-end: 0.5rem;
+	width: 2rem;
+	height: 2rem;
+	margin: 0;
+	
+	ion-icon {
+		font-size: 1.125rem;
+	}
+}
+
+.exercise-add-button {
+	display: flex;
+	align-items: center;
+	gap: 0.375rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.5rem;
+	background: var(--ion-color-step-50, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.05));
+	border: 1px solid var(--ion-color-step-100, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1));
+	color: var(--color-text-default);
+	transition: all 0.2s ease;
+	cursor: pointer;
+	
+	&:hover {
+		background: var(--ion-color-step-100, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.07));
+		border-color: var(--ion-color-step-150, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.15));
+	}
+	
+	&:active {
+		transform: scale(0.98);
+	}
+}
+
+.exercise-empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	background: var(--ion-color-step-50, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.05));
+	border: 1px dashed var(--ion-color-step-200, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.15));
+	border-radius: 0.75rem;
+}

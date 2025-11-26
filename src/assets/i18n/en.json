@@ -72,6 +72,55 @@
       "alt": "Graphs and charts",
       "title": "See how far you've come."
     }
+  },
+  "workouts": {
+    "title": "Workouts",
+    "welcome": {
+      "title": "Welcome 👋",
+      "description": "Create your first workout to start your sessions and track your progress."
+    },
+    "actions": {
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "logout": "Log out"
+    },
+    "errors": {
+      "loading": "Error loading workouts",
+      "create": "Error creating workout",
+      "update": "Error updating workout",
+      "delete": "Error deleting workout",
+      "userNotConnected": "User not connected",
+      "workoutNotFound": "User not connected or workout not found"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete the workout \"{{name}}\"?"
+    },
+    "form": {
+      "title": {
+        "create": "Create a new workout",
+        "edit": "Edit workout"
+      },
+      "workoutName": {
+        "label": "Workout name"
+      },
+      "exercises": {
+        "label": "Exercises",
+        "placeholder": "Exercise name",
+        "empty": "No exercises added. Click the button above to add one."
+      },
+      "submit": {
+        "create": "Create",
+        "edit": "Edit"
+      }
+    },
+    "list": {
+      "exercisesCount": {
+        "one": "{{count}} exercise",
+        "other": "{{count}} exercises"
+      }
+    }
   }
 }
 

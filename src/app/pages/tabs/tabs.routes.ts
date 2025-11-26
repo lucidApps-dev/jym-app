@@ -8,13 +8,15 @@ export const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'workouts',
         loadComponent: () =>
-          import('@pages/tab1/tab1.page').then((m) => m.Tab1Page),
+          import('@pages/workouts/workouts.page').then(
+            (m) => m.WorkoutsPage,
+          ),
       },
       {
         path: '',
-        redirectTo: 'tab1',
+        redirectTo: 'workouts',
         pathMatch: 'full',
       },
     ],
