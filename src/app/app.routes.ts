@@ -10,7 +10,8 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    loadComponent: () => import('@pages/auth/auth.page').then((m) => m.AuthPage),
+    loadComponent: () =>
+      import('@pages/auth/auth.page').then((m) => m.AuthPage),
     canActivate: [loginGuard],
   },
   {

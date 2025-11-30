@@ -1,11 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>{{ 'workouts.title' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+@if (!hideHeader()) {
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>{{ 'workouts.title' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content [fullscreen]="true">
-  <section class="flex h-full flex-col px-6 py-6">
+  <ion-content [fullscreen]="true">
+    <ng-container *ngTemplateOutlet="workoutContent"></ng-container>
+  </ion-content>
+} @else {
+  <ng-container *ngTemplateOutlet="workoutContent"></ng-container>
+}
+
+<ng-template #workoutContent>
+  <section class="workout-content flex flex-col px-6 py-6">
     @if (error()) {
       <div class="mb-4 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3">
         <p class="text-sm text-red-400">{{ error() }}</p>
@@ -62,7 +70,7 @@
       </div>
     }
   </section>
-</ion-content>
+</ng-template>
 
 <ion-modal [isOpen]="isWorkoutModalOpen()" (willDismiss)="closeWorkoutModal()">
   <ng-template>
