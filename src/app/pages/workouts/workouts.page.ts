@@ -8,7 +8,6 @@ import {
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
 import {
   ActionSheetController,
   IonButton,
@@ -25,7 +24,6 @@ import { addIcons } from 'ionicons';
 import {
   addOutline,
   close,
-  logOutOutline,
   createOutline,
   trashOutline,
   ellipsisVertical,
@@ -78,7 +76,6 @@ export class WorkoutsPage {
 
   private readonly authService = inject(AuthService);
   private readonly workoutService = inject(WorkoutService);
-  private readonly router = inject(Router);
   private readonly actionSheetController = inject(ActionSheetController);
   private readonly translationService = inject(TranslationService);
 
@@ -113,7 +110,6 @@ export class WorkoutsPage {
     addIcons({
       addOutline,
       close,
-      logOutOutline,
       createOutline,
       trashOutline,
       ellipsisVertical,
@@ -317,12 +313,6 @@ export class WorkoutsPage {
     return this.translationService
       .translate(key)
       .replace('{{count}}', count.toString());
-  }
-
-  onLogout(): void {
-    this.authService.logout().subscribe(() => {
-      this.router.navigateByUrl('/auth');
-    });
   }
 
   trackWorkoutById = (_: number, workout: Workout): string => workout.id;

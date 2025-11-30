@@ -83,8 +83,7 @@
       "create": "Create",
       "edit": "Edit",
       "delete": "Delete",
-      "cancel": "Cancel",
-      "logout": "Log out"
+      "cancel": "Cancel"
     },
     "errors": {
       "loading": "Error loading workouts",
@@ -120,6 +119,26 @@
         "one": "{{count}} exercise",
         "other": "{{count}} exercises"
       }
+    }
+  },
+  "tabs": {
+    "workouts": "Workouts",
+    "stats": "Stats",
+    "profile": "Profile",
+    "goTo": "Go to",
+    "goToProfile": "Go to profile"
+  },
+  "profile": {
+    "title": "Profile",
+    "settings": "Settings",
+    "logout": "Log out",
+    "deleteAccount": {
+      "label": "Delete my account",
+      "confirm": "Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted."
+    },
+    "errors": {
+      "userNotConnected": "User not connected",
+      "deleteAccount": "Error deleting account. Please try again."
     }
   }
 }

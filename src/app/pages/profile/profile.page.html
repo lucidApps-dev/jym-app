@@ -1,0 +1,55 @@
+@if (!hideHeader()) {
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>{{ 'profile.title' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <ng-container *ngTemplateOutlet="profileContent"></ng-container>
+  </ion-content>
+} @else {
+  <ng-container *ngTemplateOutlet="profileContent"></ng-container>
+}
+
+<ng-template #profileContent>
+  <section class="profile-content flex flex-col bg-default">
+    @if (error()) {
+      <div class="profile-error mb-4 mx-6 mt-6">
+        <p class="text-sm text-red-400">{{ error() }}</p>
+      </div>
+    }
+
+    <div class="profile-header flex flex-col items-center pt-8 pb-6 px-6">
+      <div class="profile-avatar mb-4">
+        <span class="avatar-letter">{{ userInitial() }}</span>
+      </div>
+      <p class="profile-email text-sm text-gray-600">{{ userEmail() }}</p>
+    </div>
+
+    <div class="profile-sections">
+      <ion-list class="profile-list">
+        <ion-item button (click)="onSettings()" class="profile-item" [disabled]="isLoading()">
+          <ion-label>{{ 'profile.settings' | translate }}</ion-label>
+        </ion-item>
+        <ion-item button (click)="onLogout()" class="profile-item" [disabled]="isLoading()">
+          <ion-label>{{ 'profile.logout' | translate }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list class="profile-list">
+        <ion-item
+          button
+          (click)="onDeleteAccount()"
+          class="profile-item profile-item-danger"
+          [disabled]="isLoading()"
+        >
+          @if (isLoading()) {
+            <ion-spinner name="crescent" slot="end" class="text-red-500"></ion-spinner>
+          }
+          <ion-label>{{ 'profile.deleteAccount.label' | translate }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </section>
+</ng-template>

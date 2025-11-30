@@ -10,6 +10,7 @@ import {
   deleteDoc,
   query,
   orderBy,
+  getDocs,
 } from '@angular/fire/firestore';
 import { Timestamp } from 'firebase/firestore';
 import { Observable, map } from 'rxjs';
@@ -147,5 +148,16 @@ export class WorkoutService {
       `users/${userId}/workouts/${workoutId}`
     );
     await deleteDoc(workoutRef);
+  }
+
+  async deleteAllWorkouts(userId: string): Promise<void> {
+    const workoutsRef = collection(this.firestore, `users/${userId}/workouts`);
+    const workoutsSnapshot = await getDocs(workoutsRef);
+
+    const deletePromises = workoutsSnapshot.docs.map((workoutDoc) =>
+      deleteDoc(workoutDoc.ref)
+    );
+
+    await Promise.all(deletePromises);
   }
 }
