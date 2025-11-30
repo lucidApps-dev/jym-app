@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import {
@@ -61,6 +68,7 @@ import {
   standalone: true,
 })
 export class WorkoutsPage {
+  readonly hideHeader = input<boolean>(false);
   readonly isWorkoutModalOpen = signal(false);
   readonly isLoading = signal(false);
   readonly isLoadingWorkouts = signal(true);

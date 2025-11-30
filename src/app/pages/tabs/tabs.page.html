@@ -1,8 +1,42 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="workouts" href="/tabs/workouts">
-      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
-      <ion-label>Workouts</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="tabs-container">
+      @for (tab of tabs; track tab.id; let i = $index) {
+        <button
+          type="button"
+          class="tab-button"
+          [class.active]="activeTabIndex() === i"
+          (click)="onTabClick(i)"
+          [attr.aria-label]="'Aller à ' + tab.label"
+          [attr.aria-selected]="activeTabIndex() === i"
+          role="tab"
+        >
+          {{ tab.label }}
+        </button>
+      }
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  [fullscreen]="true"
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
+  (touchend)="onTouchEnd($event)"
+>
+  <div
+    class="tabs-content"
+    [style.transform]="'translateX(-' + (activeTabIndex() * 100) + '%)'"
+  >
+    @for (tab of tabs; track tab.id; let i = $index) {
+      <div class="tab-panel">
+        @if (tab.id === 'workouts') {
+          <jym-workouts [hideHeader]="true"></jym-workouts>
+        }
+        @if (tab.id === 'stats') {
+          <jym-stats [hideHeader]="true"></jym-stats>
+        }
+      </div>
+    }
+  </div>
+</ion-content>

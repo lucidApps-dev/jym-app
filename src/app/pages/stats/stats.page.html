@@ -1,0 +1,22 @@
+@if (!hideHeader()) {
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>Stats</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ng-container *ngTemplateOutlet="statsContent"></ng-container>
+  </ion-content>
+} @else {
+  <ng-container *ngTemplateOutlet="statsContent"></ng-container>
+}
+
+<ng-template #statsContent>
+  <section class="stats-content flex flex-col items-center justify-center px-6 py-6">
+    <div class="text-center">
+      <h2 class="text-2xl font-semibold mb-4">Stats</h2>
+      <p class="text-sm text-gray-500">Page de statistiques à venir</p>
+    </div>
+  </section>
+</ng-template>
