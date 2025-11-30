@@ -46,6 +46,14 @@
   --color-primary: #14B8A6;
   --color-primary-light: #2DD4BF;
   --color-background-default: #F9F9F9;
+  
+  /* Ionic primary color - using app primary color */
+  --ion-color-primary: #14B8A6;
+  --ion-color-primary-rgb: 20, 184, 166;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #12a293;
+  --ion-color-primary-tint: #2cbfaf;
 }
 
 /* Default background color for all pages */
@@ -53,14 +61,22 @@ ion-content {
   --background: var(--color-background-default);
 }
 
+.header-flat,
+ion-header,
+ion-toolbar {
+  --background: transparent;
+  --border-color: transparent;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 .bg-default {
-  background: var(--color-background-default);
+  background: var(--color-background-default) !important;
 }
 
 .icon-primary {
   color: var(--color-primary) !important;
 } 
-
 
 /* Custom Tailwind utility classes for safe-area */
 @layer utilities {
@@ -88,5 +104,16 @@ ion-content {
 
   .pt-safe {
     padding-top: calc(1.5rem + env(safe-area-inset-top));
+  }
+}
+
+/* ActionSheet button colors override */
+.workout-action-sheet {
+  .workout-action-sheet-edit {
+    --button-color: var(--ion-text-default) !important;
+  }
+
+  .workout-action-sheet-cancel {
+    --button-color: var(--ion-text-color, var(--ion-color-medium)) !important;
   }
 }
