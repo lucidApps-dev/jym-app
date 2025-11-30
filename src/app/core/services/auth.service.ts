@@ -1,5 +1,14 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, User } from '@angular/fire/auth';
+import {
+  Auth,
+  authState,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail,
+  deleteUser,
+  User,
+} from '@angular/fire/auth';
 import { Observable, from, map, switchMap, tap, of } from 'rxjs';
 
 import { BiometricService } from '@core/services/biometric.service';
@@ -21,9 +30,9 @@ export class AuthService {
         return from(this.biometricService.isAvailable()).pipe(
           switchMap((isAvailable) => {
             if (isAvailable) {
-              return from(this.biometricService.storeCredentials(email, password)).pipe(
-                map(() => userCredential.user),
-              );
+              return from(
+                this.biometricService.storeCredentials(email, password)
+              ).pipe(map(() => userCredential.user));
             }
             return of(userCredential.user);
           })
@@ -33,20 +42,26 @@ export class AuthService {
   }
 
   register(email: string, password: string): Observable<User> {
-    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(
       switchMap((userCredential) => {
         return from(this.biometricService.isAvailable()).pipe(
           switchMap((isAvailable) => {
             if (isAvailable) {
-              return from(this.biometricService.storeCredentials(email, password)).pipe(
-                map(() => userCredential.user),
-              );
+              return from(
+                this.biometricService.storeCredentials(email, password)
+              ).pipe(map(() => userCredential.user));
             }
             return of(userCredential.user);
           })
         );
       })
     );
+  }
+
+  resetPassword(email: string): Observable<void> {
+    return from(sendPasswordResetEmail(this.auth, email));
   }
 
   async loginWithBiometric(): Promise<User> {
@@ -75,8 +90,13 @@ export class AuthService {
     await this.biometricService.deleteCredentials();
   }
 
-  resetPassword(email: string): Observable<void> {
-    return from(sendPasswordResetEmail(this.auth, email));
+  async deleteAccount(user: User): Promise<void> {
+    try {
+      await this.deleteBiometricCredentials();
+    } catch (error) {
+      console.warn('Failed to delete biometric credentials:', error);
+    }
+
+    await deleteUser(user);
   }
 }
-

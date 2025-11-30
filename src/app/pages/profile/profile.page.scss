@@ -1,0 +1,106 @@
+.profile-content {
+  min-height: 100%;
+  height: 100%;
+  background-color: var(--ion-background-color, #fff);
+}
+
+.profile-error {
+  padding: 0.75rem 1rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 0.5rem;
+}
+
+.profile-header {
+  border-bottom: 1px solid rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.1);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar-letter {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ion-text-color, #000);
+  line-height: 1;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.profile-email {
+  font-size: 0.875rem;
+  color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6);
+  word-break: break-all;
+  text-align: center;
+}
+
+.profile-sections {
+  flex: 1;
+  padding-top: 1rem;
+}
+
+.profile-list {
+  background: transparent;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.profile-item {
+  --padding-start: 1.5rem;
+  --padding-end: 1.5rem;
+  --min-height: 48px;
+  --background: transparent;
+  --border-color: rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.1);
+  --inner-padding-end: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    --background: rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.05);
+  }
+
+  &:active {
+    --background: rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.1);
+  }
+
+  ion-label {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ion-text-color, #000);
+  }
+
+  &.profile-item-danger {
+    ion-label {
+      color: var(--ion-color-danger, #eb445a);
+      font-weight: 500;
+    }
+
+    &:hover:not([disabled]) {
+      --background: rgba(var(--ion-color-danger-rgb, 235, 68, 90), 0.05);
+    }
+
+    &:active:not([disabled]) {
+      --background: rgba(var(--ion-color-danger-rgb, 235, 68, 90), 0.1);
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+

@@ -83,8 +83,7 @@
       "create": "Créer",
       "edit": "Modifier",
       "delete": "Supprimer",
-      "cancel": "Annuler",
-      "logout": "Déconnexion"
+      "cancel": "Annuler"
     },
     "errors": {
       "loading": "Erreur lors du chargement des workouts",
@@ -120,6 +119,26 @@
         "one": "{{count}} exercice",
         "other": "{{count}} exercices"
       }
+    }
+  },
+  "tabs": {
+    "workouts": "Workouts",
+    "stats": "Stats",
+    "profile": "Profil",
+    "goTo": "Aller à",
+    "goToProfile": "Aller au profil"
+  },
+  "profile": {
+    "title": "Profil",
+    "settings": "Paramètres",
+    "logout": "Se déconnecter",
+    "deleteAccount": {
+      "label": "Supprimer mon compte",
+      "confirm": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et toutes vos données seront définitivement supprimées."
+    },
+    "errors": {
+      "userNotConnected": "Utilisateur non connecté",
+      "deleteAccount": "Erreur lors de la suppression du compte. Veuillez réessayer."
     }
   }
 }

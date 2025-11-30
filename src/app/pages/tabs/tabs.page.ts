@@ -1,14 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 
+import { AuthService } from '@core/services/auth.service';
+import { TranslationService } from '@core/services/translation.service';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
+
+import { ProfilePage } from '../profile/profile.page';
 import { StatsPage } from '../stats/stats.page';
 import { WorkoutsPage } from '../workouts/workouts.page';
 
 export interface TabItem {
   id: string;
   label: string;
-  component: typeof WorkoutsPage | typeof StatsPage;
+  component: typeof WorkoutsPage | typeof StatsPage | typeof ProfilePage;
 }
 
 @Component({
@@ -22,17 +28,51 @@ export interface TabItem {
     IonContent,
     WorkoutsPage,
     StatsPage,
+    ProfilePage,
+    TranslatePipe,
   ],
   standalone: true,
 })
 export class TabsPage {
+  private readonly authService = inject(AuthService);
+  private readonly translationService = inject(TranslationService);
+
   readonly tabs: TabItem[] = [
-    { id: 'workouts', label: 'Workouts', component: WorkoutsPage },
-    { id: 'stats', label: 'Stats', component: StatsPage },
+    { id: 'workouts', label: 'workouts', component: WorkoutsPage },
+    { id: 'stats', label: 'stats', component: StatsPage },
+    { id: 'profile', label: 'profile', component: ProfilePage },
   ];
+
+  readonly translatedTabs = computed(() =>
+    this.tabs.map((tab) => ({
+      ...tab,
+      translatedLabel: this.translationService.translate(`tabs.${tab.label}`),
+      ariaLabel: `${this.translationService.translate(
+        'tabs.goTo'
+      )} ${this.translationService.translate(`tabs.${tab.label}`)}`,
+    }))
+  );
 
   readonly activeTabIndex = signal<number>(0);
   readonly activeTab = computed(() => this.tabs[this.activeTabIndex()]);
+
+  private readonly user$ = toSignal(this.authService.getUser(), {
+    initialValue: null,
+  });
+
+  readonly userEmail = computed(() => this.user$()?.email ?? '');
+  readonly avatarLetter = computed(() => {
+    const email = this.userEmail();
+    if (!email) {
+      return '?';
+    }
+    return email.trim().charAt(0).toUpperCase();
+  });
+
+  readonly profileTabIndex = computed(() =>
+    this.tabs.findIndex((tab) => tab.id === 'profile')
+  );
+
   private touchStartX = 0;
   private touchStartY = 0;
   private touchEndX = 0;
@@ -43,6 +83,13 @@ export class TabsPage {
 
   onTabClick(index: number): void {
     this.activeTabIndex.set(index);
+  }
+
+  onAvatarClick(): void {
+    const profileIndex = this.tabs.findIndex((tab) => tab.id === 'profile');
+    if (profileIndex !== -1) {
+      this.onTabClick(profileIndex);
+    }
   }
 
   onTouchStart(event: TouchEvent): void {
@@ -59,7 +106,6 @@ export class TabsPage {
     // Determine if this is a horizontal swipe
     if (deltaX > 10 && deltaX > deltaY * (1 / this.maxVerticalSwipeRatio)) {
       this.isSwiping = true;
-      // Prevent default scrolling while swiping horizontally
       event.preventDefault();
     }
   }

@@ -83,15 +83,17 @@ describe('TabsPage', () => {
   });
 
   describe('Initialization', () => {
-    it('should have 2 tabs', () => {
-      expect(component.tabs.length).toBe(2);
+    it('should have 3 tabs', () => {
+      expect(component.tabs.length).toBe(3);
     });
 
     it('should have workouts and stats tabs', () => {
       expect(component.tabs[0].id).toBe('workouts');
-      expect(component.tabs[0].label).toBe('Workouts');
+      expect(component.tabs[0].label).toBe('workouts');
       expect(component.tabs[1].id).toBe('stats');
-      expect(component.tabs[1].label).toBe('Stats');
+      expect(component.tabs[1].label).toBe('stats');
+      expect(component.tabs[2].id).toBe('profile');
+      expect(component.tabs[2].label).toBe('profile');
     });
 
     it('should start at index 0', () => {
@@ -100,7 +102,7 @@ describe('TabsPage', () => {
 
     it('should compute activeTab correctly', () => {
       expect(component.activeTab().id).toBe('workouts');
-      expect(component.activeTab().label).toBe('Workouts');
+      expect(component.activeTab().label).toBe('workouts');
     });
   });
 
@@ -121,7 +123,7 @@ describe('TabsPage', () => {
     it('should update activeTab computed when changing tab', () => {
       component.onTabClick(1);
       expect(component.activeTab().id).toBe('stats');
-      expect(component.activeTab().label).toBe('Stats');
+      expect(component.activeTab().label).toBe('stats');
     });
   });
 
@@ -251,12 +253,12 @@ describe('TabsPage', () => {
         const endEvent = createTouchEvent('touchend', 200, 50);
         component.onTouchEnd(endEvent);
 
-        expect(component.activeTabIndex()).toBe(1);
-        expect(component.activeTab().id).toBe('stats');
+        expect(component.activeTabIndex()).toBe(2);
+        expect(component.activeTab().id).toBe('profile');
       });
 
       it('should cycle to first tab when swiping left from last tab', () => {
-        component.onTabClick(1);
+        component.onTabClick(2);
 
         const startEvent = createTouchEvent('touchstart', 100, 50);
         component.onTouchStart(startEvent);

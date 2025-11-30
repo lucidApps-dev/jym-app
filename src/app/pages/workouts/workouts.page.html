@@ -51,14 +51,6 @@
     @if (!isLoadingWorkouts()) {
       <div class="flex justify-end">
         <jym-button
-          mode="transparent"
-          icon="log-out-outline"
-          class="flex-1"
-          (click)="onLogout()"
-        >
-         {{ 'workouts.actions.logout' | translate }}
-        </jym-button>
-        <jym-button
           mode="primary"
           icon="add-outline"
           [disabled]="isLoading()"

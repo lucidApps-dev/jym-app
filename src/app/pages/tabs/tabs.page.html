@@ -1,19 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="tabs-container">
-      @for (tab of tabs; track tab.id; let i = $index) {
-        <button
-          type="button"
-          class="tab-button"
-          [class.active]="activeTabIndex() === i"
-          (click)="onTabClick(i)"
-          [attr.aria-label]="'Aller à ' + tab.label"
-          [attr.aria-selected]="activeTabIndex() === i"
-          role="tab"
-        >
-          {{ tab.label }}
-        </button>
-      }
+      <div class="tabs-labels">
+        @for (tab of translatedTabs(); track tab.id; let i = $index) {
+          @if (tab.id !== 'profile') {
+            <button
+              type="button"
+              class="tab-button"
+              [class.active]="activeTabIndex() === i"
+              (click)="onTabClick(i)"
+              [attr.aria-label]="tab.ariaLabel"
+              [attr.aria-selected]="activeTabIndex() === i"
+              role="tab"
+            >
+              {{ tab.translatedLabel }}
+            </button>
+          }
+        }
+      </div>
+      <button
+        type="button"
+        class="avatar-button"
+        [class.active]="activeTabIndex() === profileTabIndex()"
+        (click)="onAvatarClick()"
+        [attr.aria-label]="'tabs.goToProfile' | translate"
+        [attr.aria-selected]="activeTabIndex() === profileTabIndex()"
+        role="tab"
+      >
+        <span class="avatar-letter">{{ avatarLetter() }}</span>
+      </button>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -35,6 +50,9 @@
         }
         @if (tab.id === 'stats') {
           <jym-stats [hideHeader]="true"></jym-stats>
+        }
+        @if (tab.id === 'profile') {
+          <jym-profile [hideHeader]="true"></jym-profile>
         }
       </div>
     }
