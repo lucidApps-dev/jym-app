@@ -1,0 +1,25 @@
+@if (!hideHeader()) {
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>Dashboard</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ng-container *ngTemplateOutlet="dashboardContent"></ng-container>
+  </ion-content>
+} @else {
+  <ng-container *ngTemplateOutlet="dashboardContent"></ng-container>
+}
+
+<ng-template #dashboardContent>
+  <section class="flex flex-col items-center justify-center px-6 py-12 min-h-full">
+    <div class="text-center max-w-md">
+      <h1 class="text-3xl font-bold mb-4 text-gray-900">Dashboard</h1>
+      <p class="text-base text-gray-600">
+        Dashboard à venir
+      </p>
+    </div>
+  </section>
+</ng-template>
+

@@ -122,7 +122,8 @@
     }
   },
   "tabs": {
-    "workouts": "Workouts",
+    "dashboard": "Dashboard",
+    "history": "History",
     "stats": "Stats",
     "profile": "Profile",
     "goTo": "Go to",
@@ -132,6 +133,10 @@
     "title": "Profile",
     "settings": "Settings",
     "logout": "Log out",
+    "workouts": {
+      "title": "Workouts",
+      "description": "Create and manage your workout templates"
+    },
     "deleteAccount": {
       "label": "Delete my account",
       "confirm": "Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted."

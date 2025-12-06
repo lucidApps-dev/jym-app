@@ -83,17 +83,19 @@ describe('TabsPage', () => {
   });
 
   describe('Initialization', () => {
-    it('should have 3 tabs', () => {
-      expect(component.tabs.length).toBe(3);
+    it('should have 4 tabs', () => {
+      expect(component.tabs.length).toBe(4);
     });
 
-    it('should have workouts and stats tabs', () => {
-      expect(component.tabs[0].id).toBe('workouts');
-      expect(component.tabs[0].label).toBe('workouts');
-      expect(component.tabs[1].id).toBe('stats');
-      expect(component.tabs[1].label).toBe('stats');
-      expect(component.tabs[2].id).toBe('profile');
-      expect(component.tabs[2].label).toBe('profile');
+    it('should have dashboard, history, stats and profile tabs', () => {
+      expect(component.tabs[0].id).toBe('dashboard');
+      expect(component.tabs[0].label).toBe('dashboard');
+      expect(component.tabs[1].id).toBe('history');
+      expect(component.tabs[1].label).toBe('history');
+      expect(component.tabs[2].id).toBe('stats');
+      expect(component.tabs[2].label).toBe('stats');
+      expect(component.tabs[3].id).toBe('profile');
+      expect(component.tabs[3].label).toBe('profile');
     });
 
     it('should start at index 0', () => {
@@ -101,8 +103,8 @@ describe('TabsPage', () => {
     });
 
     it('should compute activeTab correctly', () => {
-      expect(component.activeTab().id).toBe('workouts');
-      expect(component.activeTab().label).toBe('workouts');
+      expect(component.activeTab().id).toBe('dashboard');
+      expect(component.activeTab().label).toBe('dashboard');
     });
   });
 
@@ -110,18 +112,18 @@ describe('TabsPage', () => {
     it('should change active tab when clicking on a tab', () => {
       component.onTabClick(1);
       expect(component.activeTabIndex()).toBe(1);
-      expect(component.activeTab().id).toBe('stats');
+      expect(component.activeTab().id).toBe('history');
     });
 
     it('should change active tab back to first tab', () => {
       component.onTabClick(1);
       component.onTabClick(0);
       expect(component.activeTabIndex()).toBe(0);
-      expect(component.activeTab().id).toBe('workouts');
+      expect(component.activeTab().id).toBe('dashboard');
     });
 
     it('should update activeTab computed when changing tab', () => {
-      component.onTabClick(1);
+      component.onTabClick(2);
       expect(component.activeTab().id).toBe('stats');
       expect(component.activeTab().label).toBe('stats');
     });
@@ -217,7 +219,7 @@ describe('TabsPage', () => {
         component.onTouchEnd(endEvent);
 
         expect(component.activeTabIndex()).toBe(1);
-        expect(component.activeTab().id).toBe('stats');
+        expect(component.activeTab().id).toBe('history');
       });
 
       it('should navigate to previous tab on swipe right (sufficient distance)', () => {
@@ -233,7 +235,7 @@ describe('TabsPage', () => {
         component.onTouchEnd(endEvent);
 
         expect(component.activeTabIndex()).toBe(0);
-        expect(component.activeTab().id).toBe('workouts');
+        expect(component.activeTab().id).toBe('dashboard');
       });
 
       it('should not navigate when swipe distance is insufficient', () => {
@@ -253,12 +255,12 @@ describe('TabsPage', () => {
         const endEvent = createTouchEvent('touchend', 200, 50);
         component.onTouchEnd(endEvent);
 
-        expect(component.activeTabIndex()).toBe(2);
+        expect(component.activeTabIndex()).toBe(3);
         expect(component.activeTab().id).toBe('profile');
       });
 
       it('should cycle to first tab when swiping left from last tab', () => {
-        component.onTabClick(2);
+        component.onTabClick(3);
 
         const startEvent = createTouchEvent('touchstart', 100, 50);
         component.onTouchStart(startEvent);
@@ -270,7 +272,7 @@ describe('TabsPage', () => {
         component.onTouchEnd(endEvent);
 
         expect(component.activeTabIndex()).toBe(0);
-        expect(component.activeTab().id).toBe('workouts');
+        expect(component.activeTab().id).toBe('dashboard');
       });
 
       it('should reset isSwiping flag after touch end', () => {
@@ -349,7 +351,7 @@ describe('TabsPage', () => {
       component.onTouchEnd(endEvent);
 
       expect(component.activeTabIndex()).toBe(0);
-      expect(component.activeTab().id).toBe('workouts');
+      expect(component.activeTab().id).toBe('dashboard');
     });
   });
 });
