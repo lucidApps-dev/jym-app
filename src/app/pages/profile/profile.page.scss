@@ -75,6 +75,19 @@
     font-size: 1rem;
     font-weight: 400;
     color: var(--ion-text-color, #000);
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0;
+      color: var(--ion-text-color, #000);
+    }
+
+    p {
+      font-size: 0.875rem;
+      margin: 0.25rem 0 0 0;
+      color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6);
+    }
   }
 
   &.profile-item-danger {

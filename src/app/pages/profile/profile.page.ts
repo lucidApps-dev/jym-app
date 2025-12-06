@@ -70,6 +70,10 @@ export class ProfilePage {
     // TODO: Implémenter les paramètres
   }
 
+  onNavigateToWorkouts(): void {
+    this.router.navigate(['/workouts']);
+  }
+
   async onDeleteAccount(): Promise<void> {
     const user = this.user$();
 

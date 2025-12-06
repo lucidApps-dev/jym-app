@@ -122,7 +122,8 @@
     }
   },
   "tabs": {
-    "workouts": "Workouts",
+    "dashboard": "Dashboard",
+    "history": "Historique",
     "stats": "Stats",
     "profile": "Profil",
     "goTo": "Aller à",
@@ -132,6 +133,10 @@
     "title": "Profil",
     "settings": "Paramètres",
     "logout": "Se déconnecter",
+    "workouts": {
+      "title": "Workouts",
+      "description": "Créer et modifier tes modèles de séance"
+    },
     "deleteAccount": {
       "label": "Supprimer mon compte",
       "confirm": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et toutes vos données seront définitivement supprimées."

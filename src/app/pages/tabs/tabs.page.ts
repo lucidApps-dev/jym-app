@@ -7,14 +7,19 @@ import { AuthService } from '@core/services/auth.service';
 import { TranslationService } from '@core/services/translation.service';
 import { TranslatePipe } from '@shared/pipes/translate.pipe';
 
+import { DashboardPage } from '../dashboard/dashboard.page';
+import { HistoryPage } from '../history/history.page';
 import { ProfilePage } from '../profile/profile.page';
 import { StatsPage } from '../stats/stats.page';
-import { WorkoutsPage } from '../workouts/workouts.page';
 
 export interface TabItem {
   id: string;
   label: string;
-  component: typeof WorkoutsPage | typeof StatsPage | typeof ProfilePage;
+  component:
+    | typeof DashboardPage
+    | typeof HistoryPage
+    | typeof StatsPage
+    | typeof ProfilePage;
 }
 
 @Component({
@@ -26,7 +31,8 @@ export interface TabItem {
     IonHeader,
     IonToolbar,
     IonContent,
-    WorkoutsPage,
+    DashboardPage,
+    HistoryPage,
     StatsPage,
     ProfilePage,
     TranslatePipe,
@@ -38,7 +44,8 @@ export class TabsPage {
   private readonly translationService = inject(TranslationService);
 
   readonly tabs: TabItem[] = [
-    { id: 'workouts', label: 'workouts', component: WorkoutsPage },
+    { id: 'dashboard', label: 'dashboard', component: DashboardPage },
+    { id: 'history', label: 'history', component: HistoryPage },
     { id: 'stats', label: 'stats', component: StatsPage },
     { id: 'profile', label: 'profile', component: ProfilePage },
   ];

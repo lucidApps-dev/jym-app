@@ -29,6 +29,12 @@
 
     <div class="profile-sections">
       <ion-list class="profile-list">
+        <ion-item button (click)="onNavigateToWorkouts()" class="profile-item" [disabled]="isLoading()">
+          <ion-label>
+            <h2>{{ 'profile.workouts.title' | translate }}</h2>
+            <p>{{ 'profile.workouts.description' | translate }}</p>
+          </ion-label>
+        </ion-item>
         <ion-item button (click)="onSettings()" class="profile-item" [disabled]="isLoading()">
           <ion-label>{{ 'profile.settings' | translate }}</ion-label>
         </ion-item>
